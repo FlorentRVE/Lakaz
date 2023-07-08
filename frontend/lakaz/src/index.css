@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 
-/*body {
+body {
+
+    width: 80%;
+    margin: 0 auto;
 
 }
-*/

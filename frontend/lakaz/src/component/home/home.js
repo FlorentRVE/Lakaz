@@ -1,20 +1,19 @@
 //=============================== Composant Home ==========================
 
 import React from 'react';
+import Header from '../header/header';
+import HomeGrid from './home_grid';
 
 
 const Home = () => {
 
   return (
+
     <div className=''>
+
+      <Header />
         
-        <div className=''>
-            <div className='flex flex-col mb-12 text-center'>
-              <h1 className='text-slate-800 text-5xl md:text-8xl'>Recette La Kaz</h1>
-              <h2 className=' text-4xl text-slate-200 uppercase mb-4 md:text-6xl'>Choix catégorie</h2>
-            </div>
-            
-        </div>
+      <HomeGrid />
     
     </div>
   );
