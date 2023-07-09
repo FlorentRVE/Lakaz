@@ -3,6 +3,7 @@
 import React from 'react';
 import Header from '../header/header';
 import HomeGrid from './home_grid';
+import Footer from '../footer';
 
 
 const Home = () => {
@@ -14,6 +15,8 @@ const Home = () => {
       <Header />
         
       <HomeGrid />
+
+      < Footer />
     
     </div>
   );
