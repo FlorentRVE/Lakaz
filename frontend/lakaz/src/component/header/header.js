@@ -1,5 +1,4 @@
 import React from "react";
-import Menu from "./menu";
 import SearchBar from "./search_bar";
 
 const Header = () => {
@@ -8,8 +7,6 @@ const Header = () => {
         <div className="flex flex-col">
 
             < SearchBar />
-            
-            < Menu />
 
             
             
