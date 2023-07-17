@@ -1,0 +1,17 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+show_all_recipes:
+    path: /recette
+    controller: App\Controller\RecetteController::show
+
+show_recipes_by_id:
+    path: /recette/{id}
+    controller: App\Controller\RecetteController::showById
+
+create_recipe:
+    path: /createrecette
+    controller: App\Controller\RecetteController::createRecette
