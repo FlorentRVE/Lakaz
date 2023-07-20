@@ -5,10 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Recette;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\RecetteRepository;
+use App\Entity\Recette;
 
 class RecetteController extends AbstractController
 {
@@ -37,6 +36,13 @@ class RecetteController extends AbstractController
     {
         $product = $productRepository->findAll();
 
+        if (!$product) {
+            throw $this->createNotFoundException('The product does not exist');
+    
+            // the above is just a shortcut for:
+            // throw new NotFoundHttpException('The product does not exist');
+        }
+
         $data = [];
    
         foreach ($product as $product) {
@@ -58,6 +64,13 @@ class RecetteController extends AbstractController
     public function showById(int $id, RecetteRepository $productRepository): Response
     {
         $product = $productRepository->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException('The product does not exist');
+    
+            // the above is just a shortcut for:
+            // throw new NotFoundHttpException('The product does not exist');
+        }
 
         $data =[
             'id'=>$product->getId(),
