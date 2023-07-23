@@ -61,11 +61,11 @@ class RecetteController extends AbstractController
     }
        
     // Afficher une recette selon id
-    public function showById(int $id, RecetteRepository $productRepository): Response
+    public function showById(int $id, RecetteRepository $recetteRepository): Response
     {
-        $product = $productRepository->find($id);
+        $recette = $recetteRepository->find($id);
 
-        if (!$product) {
+        if (!$recette) {
             throw $this->createNotFoundException('The product does not exist');
     
             // the above is just a shortcut for:
@@ -73,14 +73,25 @@ class RecetteController extends AbstractController
         }
 
         $data =[
-            'id'=>$product->getId(),
-            'Categorie'=>$product->getCategorie(),
-            'Nom'=>$product->getNom(),
-            'Description'=>$product->getDescription(),
-            'Ingrédient'=>$product->getIngredient(),
-            'Etapes'=>$product->getEtapes()
+            'id'=>$recette->getId(),
+            'Categorie'=>$recette->getCategorie(),
+            'Nom'=>$recette->getNom(),
+            'Description'=>$recette->getDescription(),
+            'Ingrédient'=>$recette->getIngredient(),
+            'Etapes'=>$recette->getEtapes()
         ];
 
         return new JsonResponse($data);
+    }
+
+    // Supprimer une recette
+    public function deleteRecette(RecetteRepository $recetteRepository, EntityManagerInterface $entityManager): Response
+    {
+        $recette = $recetteRepository->find('A determiner');
+        $entityManager->remove($recette);
+        $entityManager->flush();
+        
+
+        return new Response('Recette supprimée', 200);
     }
 }

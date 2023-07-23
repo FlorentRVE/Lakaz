@@ -15,3 +15,14 @@ show_recipes_by_id:
 create_recipe:
     path: /createrecette
     controller: App\Controller\RecetteController::createRecette
+
+register_user:
+    path: /register
+    controller: App\Controller\RegistrationController::registerUser
+
+delete_user:
+    path: /deleteuser
+    controller: App\Controller\RegistrationController::deleteUser
+
+api_login:
+    path: /api/login
