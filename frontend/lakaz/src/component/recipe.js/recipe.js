@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import {useState, useEffect} from "react";
 import * as api from '../../utils/api';
 
@@ -16,17 +16,51 @@ const Recipe = () => {
       });
     }, [id]);
 
+    console.log(data);
+
+    const token = localStorage.getItem('jwtToken');
+
     if(data === undefined) {
         return <Navigate to="/404" />; // Redirection vers la page d'erreur si ID non présent dans le json.
       }
 
     return (
-        <div className="bg-red-400 rounded-2xl p-3 m-2">
+        <div className="p-4">
 
-                <div key={data.id} className= "bg-slate-400 rounded-2xl p-3 m-2 flex flex-col text-center">
-                    <img src="https://placehold.co/250" alt="" />
+                <div className="flex justify-between">
+
+                <Link to={`/`} style={{ textDecoration: 'none' }}>
+                    <button className="bg-blue-500 rounded-lg p-2 text-slate-200">Retour</button>
+                </Link>
+
+                <div className="flex flex-col items-center gap-2">
+                  {token &&        
+                    <Link to={`/modify/${id}`} style={{ textDecoration: 'none' }}>
+                      <button className="bg-yellow-500 rounded-lg p-2 text-slate-200">Modifier</button>
+                    </Link>
+                  
+                  }
+
+                </div>
+
+                </div>
+
+                <img src="https://placehold.co/250" alt="" className="w-full max-h-80 border-b-4"/>
+
+                <div key={data.id} className= "bg-red-200 rounded-2xl p-4 flex flex-col items-center">
+                    <h3 className="text-2xl uppercase text-red-700">{data.Nom}</h3>
+                    <p className="bg-green-500 mt-5 rounded-xl px-2 py-1 self-start">{data.Categorie}</p>
                     <p>{data.Description}</p>
-                    <h3 className= ''>{data.Nom}</h3>
+                </div>
+
+                <div className="bg-yellow-200 mt-5 rounded-2xl p-4">
+                  <p>{data.Ingredients}</p>
+
+                </div>
+
+                <div className="bg-green-200 mt-5 rounded-2xl p-4">
+                  <p>{data.Etapes}</p>
+
                 </div>
             
 

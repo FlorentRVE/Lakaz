@@ -5,16 +5,24 @@ controllers:
     type: attribute
 
 show_all_recipes:
-    path: /recette
+    path: /api/recette
     controller: App\Controller\RecetteController::show
 
 show_recipes_by_id:
-    path: /recette/{id}
+    path: /api/recette/{id}
     controller: App\Controller\RecetteController::showById
 
 create_recipe:
-    path: /createrecette
+    path: /api/createrecette
     controller: App\Controller\RecetteController::createRecette
+
+modify_recipe:
+    path: /api/modifyrecette
+    controller: App\Controller\RecetteController::modifyRecette
+
+delete_recipe:
+    path: /api/deleterecette
+    controller: App\Controller\RecetteController::deleteRecette
 
 register_user:
     path: /register
