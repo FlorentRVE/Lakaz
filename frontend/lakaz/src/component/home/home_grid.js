@@ -4,7 +4,9 @@ import {useState, useEffect} from "react";
 import * as api from '../../utils/api';
 import { useMemo } from "react";
 
-const HomeGrid = ({category}) => {
+const HomeGrid = ({category, input}) => {
+
+  console.log('input from home ' + input);
 
     const [data, setData] = useState([]); // Création du state data qui va accueillir nos données. 
   
@@ -14,18 +16,26 @@ const HomeGrid = ({category}) => {
       });
     }, []);
 
-    function getFilteredList() { // Retourne une liste filtré selon la catégorie
-      if (!category) {
-        return data; // Si pas de catégorie on retourne les données non filtrées
+    function searchFilter() { // Retourne une liste filtrée via l'input et catégorie
+
+      let finalData;
+
+      if(!category) {
+        finalData = data; // Si pas de catégorie sélectionnée on retourne les données au complet
+      } else {
+        finalData = data.filter((item) => item.Categorie === category); // Sinon on filtre selon la catégorie
       }
-      return data.filter((item) => item.Categorie === category);
+    
+      if (input === '') {
+          return finalData; // Si pas de nom on retourne les données précédentes
+      }
+      return finalData.filter((item) => item.Nom.toLowerCase().includes(input)) // Sinon on ajuste en fonction de l'input de la search barre
     }
 
-    let filteredList = useMemo(getFilteredList, [category, data]); // Permet de recalculer la liste seulement si category ou data changent 
-
-
+    // Permet de recalculer la liste seulement si input, category ou data changent
+    let filteredList = useMemo(searchFilter, [input, category, data]); 
+    
     // Puis on utilise filteredList.map() pour parcourir et manipuler les données.
-  
     return (
 
     <div className= 'flex flex-wrap justify-center'>

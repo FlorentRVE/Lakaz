@@ -1,8 +1,10 @@
 import React from "react";
-import SearchBar from "./search_bar";
+// import SearchBar from "./search_bar";
 import MenuAdmin from "./menu_admin";
 
 const Header = () => {
+
+
     return (
 
         <div className="flex flex-col items-center p-2 bg-green-400 rounded-b-2xl shadow-2xl">
@@ -11,7 +13,7 @@ const Header = () => {
 
             < MenuAdmin />
             
-            < SearchBar />
+            {/* < SearchBar onInput={onInput}/> */}
 
             
             
