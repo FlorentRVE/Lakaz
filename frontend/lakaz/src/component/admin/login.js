@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
@@ -34,7 +35,7 @@ const Login = () => {
         localStorage.setItem('jwtToken', response.data.token);
 
         // Rediriger vers la page d'accueil après une connexion réussie
-        window.location.href = 'http://127.0.0.1:3000/';
+        window.location.href = 'http://127.0.0.1:3000/create';
       })
       .catch((error) => {
         // Gérer les erreurs de la requête si nécessaire
@@ -59,6 +60,10 @@ const Login = () => {
         </div>
 
         <button type="submit" className='bg-blue-500 rounded-2xl p-2'>Se connecter</button>
+
+        <Link to={`/`} style={{ textDecoration: 'none' }}>
+            <button className="bg-orange-400 rounded-2xl py-2 px-4 text-slate-200 shadow-xl">Retour</button>
+        </Link>
 
       </form>
     </div>

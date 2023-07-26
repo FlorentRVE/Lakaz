@@ -44,6 +44,8 @@ class RecetteController extends AbstractController
     }
        
     // Afficher une recette selon id
+    
+    // #[IsGranted('ROLE_ADMIN', message: 'Vous n\'avez pas les droits suffisants pour créer une recette')]
     public function showById(int $id, RecetteRepository $recetteRepository): Response
     {
         $recette = $recetteRepository->find($id);
@@ -70,7 +72,6 @@ class RecetteController extends AbstractController
     //==================================== CRUD =============================================
 
     // Creer une recette
-    #[IsGranted('ROLE_ADMIN', message: 'Vous n\'avez pas les droits suffisants pour créer une recette')]
     public function createRecette(Request $request, EntityManagerInterface $entityManager): Response
     {
 
@@ -96,7 +97,6 @@ class RecetteController extends AbstractController
     }    
 
     // Supprimer une recette
-    #[IsGranted('ROLE_ADMIN', message: 'Vous n\'avez pas les droits suffisants pour supprimer une recette')]
     public function deleteRecette(Request $request, RecetteRepository $recetteRepository, EntityManagerInterface $entityManager): Response
     {
 
@@ -112,7 +112,6 @@ class RecetteController extends AbstractController
     }
 
     // Modifier une recette
-    #[IsGranted('ROLE_ADMIN', message: 'Vous n\'avez pas les droits suffisants pour modifier une recette')]
     public function modifyRecette(Request $request, RecetteRepository $recetteRepository, EntityManagerInterface $entityManager): Response
     {
         // Gestion de la requête

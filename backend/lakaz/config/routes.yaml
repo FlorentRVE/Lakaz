@@ -5,11 +5,11 @@ controllers:
     type: attribute
 
 show_all_recipes:
-    path: /api/recette
+    path: /recette
     controller: App\Controller\RecetteController::show
 
 show_recipes_by_id:
-    path: /api/recette/{id}
+    path: /recette/{id}
     controller: App\Controller\RecetteController::showById
 
 create_recipe:
