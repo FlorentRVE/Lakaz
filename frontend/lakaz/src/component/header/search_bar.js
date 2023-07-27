@@ -17,7 +17,7 @@ const SearchBar = ({onInput}) => {
                 onChange={inputHandler}
                 variant="outlined"
                 fullWidth
-                label="Search"
+                label="Rechercher une recette"
                 />
             </div>
             

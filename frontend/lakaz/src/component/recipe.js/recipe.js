@@ -16,8 +16,6 @@ const Recipe = () => {
       });
     }, [id]);
 
-    console.log(data);
-
     const token = localStorage.getItem('jwtToken');
 
     if(data === undefined) {

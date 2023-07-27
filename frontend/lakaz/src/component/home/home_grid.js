@@ -42,13 +42,11 @@ const HomeGrid = ({category, input}) => {
 
         {filteredList.map((item) => (
 
-          <Link key={item.id} to={`/recette/${item.id}`} style={{ textDecoration: 'none' }}>
+          <Link key={item.id} to={`/recette/${item.id}`} style={{ textDecoration: 'none'}}>
 
-            <div id={item.id} className= "bg-slate-400 rounded-2xl p-3 m-2 flex flex-col text-center">
-                <img src="https://placehold.co/250" alt="" />
-                <h3 className= ''>{item.Nom}</h3>
-                <h3 className= ''>{item.Categorie}</h3>
-                <p>{item.Description}</p>
+            <div id={item.id} className= "relative rounded-2xl m-4 h-[400px] w-[300px] shadow-xl hover:scale-105 transition ease-in-out delay-150 hover:brightness-110" style={{ backgroundImage: `url(https://www.reunionnaisdumonde.com/IMG/jpg/Pain_bouchon_gratine.jpg)`, backgroundSize: 'cover'}}>
+                <p className= 'bg-green-500 rounded-r-2xl p-2 absolute top-5 left-0 w-1/2 bg-opacity-90 text-slate-900 text-lg text-center'>{item.Categorie}</p>
+                <h2 className= 'absolute top-[300px] text-2xl text-slate-100 font-semibold ml-5'>{item.Nom}</h2>
             </div>
           </Link>
         ))}
