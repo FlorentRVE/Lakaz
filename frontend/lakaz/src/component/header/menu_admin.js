@@ -13,12 +13,12 @@ const MenuAdmin = () => {
     return (
 
 
-        <div className="flex justify-between items-center w-full my-2 ">
+        <div className="flex justify-between items-center w-[92%] mb-2">
         
         {token &&    
 
                 <Link to={`/create`} style={{ textDecoration: 'none' }}>
-                    <button className="bg-orange-400 rounded-2xl py-2 px-4 text-slate-200 shadow-xl">Créer recette</button>
+                    <button className="bg-orange-400 rounded-2xl py-2 px-4 text-slate-200 shadow-xl hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Créer recette</button>
                 </Link>               
                   
         }
@@ -26,7 +26,7 @@ const MenuAdmin = () => {
         {token &&    
             
             <Link to={`/`} style={{ textDecoration: 'none' }}>
-                <button className="bg-red-600 rounded-2xl py-2 px-4 text-slate-200 shadow-xl" onClick={logout}>LogOut</button>
+                <button className="bg-red-600 rounded-2xl py-2 px-4 text-slate-200 shadow-xl hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100" onClick={logout}>Se déconnecter</button>
             </Link>               
               
         }   

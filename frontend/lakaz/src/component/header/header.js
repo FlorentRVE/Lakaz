@@ -1,16 +1,21 @@
 import React from "react";
 import MenuAdmin from "./menu_admin";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
 
     return (
 
-        <div className="flex flex-col items-center p-2 bg-green-400 shadow-2xl sticky">
+        <div className="flex flex-col items-center p-2 bg-green-400 shadow-2xl sticky top-0">
 
-            <div className="bg-yellow-300 w-[200px]">Logo</div>
+            < MenuAdmin />    
 
-            < MenuAdmin />            
+            <Link to="/" style={{ textDecoration: 'none' }}>
+                <img src="/images/Recette_lakaz_logo.png" alt="logo" className="h-auto w-24"/>
+            </Link>
+
+                    
             
         </div>
     );
