@@ -45,24 +45,24 @@ const Login = () => {
 
   return (
     <div>
-      <h1 className='text-center text-2xl'>Page de connexion</h1>
+      <h1 className='text-center text-2xl text-red-600 font-bold my-5'>Page de connexion</h1>
 
-      <form onSubmit={handleSubmit} className='w-1/2 mx-auto my-7 flex flex-col gap-5 bg-lime-200 rounded-2xl p-4'>
+      <form onSubmit={handleSubmit} className=' mx-auto my-7 flex flex-col gap-7 bg-lime-200 rounded-2xl p-4 shadow-xl sm:w-1/2'>
 
         <div className='flex justify-between'>
-          <label>Identifiant:</label>
-          <input type="text" value={username} onChange={handleUsernameChange} className='border-2 border-slate-500'/>
+          <label className='text-red-600 font-bold uppercase'>Identifiant:</label>
+          <input type="text" value={username} onChange={handleUsernameChange} className='border-2 border-slate-500 flex-1 ml-3 sm:max-w-[150px] lg:max-w-none'/>
         </div>
 
         <div className='flex justify-between'>
-          <label>Mot de passe:</label>
-          <input type="password" value={password} onChange={handlePasswordChange} className='border-2 border-slate-500'/>
+          <label className='text-red-600 font-bold uppercase'>Mot de passe:</label>
+          <input type="password" value={password} onChange={handlePasswordChange} className='border-2 border-slate-500 flex-1 ml-3 sm:max-w-[150px] lg:max-w-none'/>
         </div>
 
-        <button type="submit" className='bg-blue-500 rounded-2xl p-2'>Se connecter</button>
+        <button type="submit" className="bg-blue-500 rounded-2xl py-2 px-4 text-slate-200 shadow-xl hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Se connecter</button>
 
         <Link to={`/`} style={{ textDecoration: 'none' }}>
-            <button className="bg-orange-400 rounded-2xl py-2 px-4 text-slate-200 shadow-xl">Retour</button>
+        <button className="bg-slate-800 rounded-2xl py-2 px-4 text-slate-200 shadow-xl hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Retour</button>
         </Link>
 
       </form>

@@ -1,7 +1,6 @@
 import React from "react";
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Footer = () => {
@@ -30,12 +29,10 @@ const Footer = () => {
 
     return (
 
-        <div className="bg-green-400 rounded-t-2xl flex justify-center">
-            
-            <Link to={`/`} style={{ textDecoration: 'none' }}>
+        <div className="bg-green-400 rounded-t-2xl flex justify-center">           
 
-            <button className="bg-yellow-500 rounded-2xl p-2 text-slate-200 w-20 m-4 hover:brightness-125 active:brightness-150 hover:-translate-y-1 transition ease-in-out" onClick={scrollToTop}><FontAwesomeIcon icon={faChevronUp}/></button>
-            </Link>
+          <button className="bg-yellow-500 rounded-2xl p-2 text-slate-200 w-20 m-4 hover:brightness-125 active:brightness-150 hover:-translate-y-1 transition ease-in-out" onClick={scrollToTop}><FontAwesomeIcon icon={faChevronUp}/></button>
+        
         </div>
 
     );

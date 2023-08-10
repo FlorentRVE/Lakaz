@@ -90,7 +90,7 @@ const Create = () => {
   
     return (
       <div>
-        <h1 className='text-center text-2xl bg-red-200 p-6 rounded-t-2xl'>Créer recette</h1>
+        <h1 className='text-center text-2xl text-red-600 font-bold my-7'>Créer recette</h1>
         <form onSubmit={handleSubmit} className='bg-lime-200 rounded-b-2xl p-4 flex flex-col gap-5'>
           <div>
             <label>Titre :</label>
