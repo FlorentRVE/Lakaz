@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\RecetteRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RecetteRepository::class)]
@@ -22,11 +23,11 @@ class Recette
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $ingredient = null;
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private ?array $ingredient = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $etapes = null;
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private ?array $etapes = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -72,24 +73,24 @@ class Recette
         return $this;
     }
 
-    public function getIngredient(): ?string
+    public function getIngredient(): ?array
     {
         return $this->ingredient;
     }
 
-    public function setIngredient(string $ingredient): static
+    public function setIngredient(array $ingredient): static
     {
         $this->ingredient = $ingredient;
 
         return $this;
     }
 
-    public function getEtapes(): ?string
+    public function getEtapes(): ?array
     {
         return $this->etapes;
     }
 
-    public function setEtapes(string $etapes): static
+    public function setEtapes(array $etapes): static
     {
         $this->etapes = $etapes;
 

@@ -18,14 +18,6 @@ class RecetteController extends AbstractController
     public function show(RecetteRepository $productRepository): Response
     {
         $product = $productRepository->findAll();
-
-        if (!$product) {
-            throw $this->createNotFoundException('Recette inconnue');
-    
-            // the above is just a shortcut for:
-            // throw new NotFoundHttpException('The product does not exist');
-        }
-
         $data = [];
    
         foreach ($product as $product) {
