@@ -6,6 +6,7 @@ const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [login, setlogin] = useState(false);
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -35,7 +36,8 @@ const Login = () => {
         localStorage.setItem('jwtToken', response.data.token);
 
         // Rediriger vers la page d'accueil après une connexion réussie
-        window.location.href = 'http://127.0.0.1:3000/create';
+        // window.location.href = 'http://127.0.0.1:3000/create';
+        setlogin(true);
       })
       .catch((error) => {
         // Gérer les erreurs de la requête si nécessaire
@@ -59,10 +61,16 @@ const Login = () => {
           <input type="password" value={password} onChange={handlePasswordChange} className='border-2 border-slate-500 flex-1 ml-3 sm:max-w-[150px] lg:max-w-none'/>
         </div>
 
+        <div className='flex flex-col items-center justify-center'>
+          {login && <p className='text-green-500 font-bold mb-3'>Connexion réussie !</p>}
+          {login && <p className='text-green-500 font-bold'>Vous pouvez retourner à l'accueil</p>}
+
+        </div>
+
         <button type="submit" className="bg-blue-500 rounded-2xl py-2 px-4 text-slate-200 shadow-xl hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Se connecter</button>
 
-        <Link to={`/`} style={{ textDecoration: 'none' }}>
-        <button className="bg-slate-800 rounded-2xl py-2 px-4 text-slate-200 shadow-xl hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Retour</button>
+        <Link to={`/`} style={{ textDecoration: 'none', margin: '0 auto' }}>
+        <button className="bg-slate-800 rounded-2xl py-2 px-4 text-slate-200 shadow-xl hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Retour à l'accueil</button>
         </Link>
 
       </form>
