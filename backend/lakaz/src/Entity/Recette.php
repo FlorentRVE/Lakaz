@@ -32,6 +32,9 @@ class Recette
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private ?array $macros = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Recette
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getMacros(): ?array
+    {
+        return $this->macros;
+    }
+
+    public function setMacros(?array $macros): static
+    {
+        $this->macros = $macros;
 
         return $this;
     }

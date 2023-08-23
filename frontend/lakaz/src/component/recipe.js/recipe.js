@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 import * as api from '../../utils/api';
 import Header from '../header/header';
 import Footer from '../footer';
-import { faCommentDots, faKitchenSet, faWheatAwnCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faCommentDots, faKitchenSet, faWheatAwnCircleExclamation, faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Recipe = () => {
@@ -24,6 +24,7 @@ const Recipe = () => {
 
     let etapesList; // Va acceueillir nos étapes sous forme de <li>, elles seront rendu plus bas dans le composant
     let ingredientsList; // Va acceueillir nos ingrédients sous forme de <li>, elles seront rendu plus bas dans le composant
+    let macrosList;
     let compteur = 0; // Compteur pour les keys id
 
     // On vérifie la validité de l'array Etapes puis on crée la liste des étapes
@@ -36,6 +37,16 @@ const Recipe = () => {
     if(data.Ingredients) {
       ingredientsList = data.Ingredients.map(item =>
       <li key={item + compteur++} className= {item ? "text-slate-900 my-2 list-[square]" : ""}>{item}</li>)
+    }
+
+    // On vérifie la validité de l'array Macros puis on crée la liste des macros
+    if(data.Macros) {
+      macrosList = [
+      <li key={data.Macros[0] + compteur++} className= {data.Macros[0] ? "text-blue-500 my-2 list-disc font-bold text-lg" : ""}>Calories : {data.Macros[0]}</li>,
+      <li key={data.Macros[1] + compteur++} className= {data.Macros[1] ? "text-red-300 my-2 list-disc font-bold text-lg" : ""}>Protéines : {data.Macros[1]}</li>,
+      <li key={data.Macros[2] + compteur++} className= {data.Macros[2] ? "text-yellow-300 my-2 list-disc font-bold text-lg" : ""}>Lipides : {data.Macros[2]}</li>,
+      <li key={data.Macros[3] + compteur++} className= {data.Macros[3] ? "text-orange-400 my-2 list-disc font-bold text-lg" : ""}>Glucides : {data.Macros[3]}</li>,
+      ]
     }
     // Note : Sans cette étape de vérification, le composant ne s'affiche pas car renvoi une erreur au premier rendu car l'array est vide à ce moment
     
@@ -113,6 +124,20 @@ const Recipe = () => {
             </div>
 
             <ol className="p-5 font-semibold">{etapesList}</ol>           
+
+          </div>
+
+          {/* ========================== Macros ==================================== */}
+
+          <div className="bg-slate-700 my-4 rounded-2xl p-4">
+
+            <div className="flex mb-1">
+              <h4 className="text-xl text-red-500 font-bold mx-2"><FontAwesomeIcon icon={faScaleBalanced} className="mr-2"/>Macros</h4>
+              <div className="flex-1 h-[2px] bg-red-400 self-center rounded-3xl mt-1"></div>
+
+            </div>
+
+            <ul className="p-5">{macrosList}</ul>
 
           </div>
 

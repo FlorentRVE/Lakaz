@@ -17,6 +17,8 @@ const Footer = () => {
       setVisible(false)
     }
   };
+
+  console.log(visible);
   
     const scrollToTop = () =>{
         window.scrollTo({

@@ -47,7 +47,7 @@ const Delete = () => {
   
     return (
       <div>
-        <h1 className='text-center text-2xl bg-red-200 p-6 rounded-t-2xl'>Supprimer une recette</h1>
+        <h1 className='text-center text-2xl text-red-600 font-bold my-7 bg-green-400 p-4 rounded-xl uppercase shadow-xl'>Supprimer une recette</h1>
         <p className="text-center text-3xl bg-slate-500 text-slate-50 py-9">Voulez-vous vraiment supprimer cette recette ?</p>
 
         {deleted &&
@@ -59,7 +59,7 @@ const Delete = () => {
           </div>
         }
 
-        <form onSubmit={handleSubmit} className='bg-lime-200 rounded-b-2xl p-4 flex gap-5 justify-between'>
+        <form onSubmit={handleSubmit} className='bg-lime-200 rounded-b-2xl p-4 flex gap-5 justify-between shadow-xl'>
         
             <Link to={`/`} style={{ textDecoration: 'none' }}>
                 <button className="bg-blue-500 rounded-lg p-2 text-slate-200">Retour</button>

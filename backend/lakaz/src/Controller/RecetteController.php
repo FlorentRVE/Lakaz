@@ -15,19 +15,20 @@ class RecetteController extends AbstractController
 {
 
     // Afficher toutes les recettes
-    public function show(RecetteRepository $productRepository): Response
+    public function show(RecetteRepository $recetteRepository): Response
     {
-        $product = $productRepository->findAll();
+        $recette = $recetteRepository->findAll();
         $data = [];
    
-        foreach ($product as $product) {
+        foreach ($recette as $recette) {
            $data[] = [
-                'id'=>$product->getId(),
-                'Categorie'=>$product->getCategorie(),
-                'Nom'=>$product->getNom(),
-                'Description'=>$product->getDescription(),
-                'Ingrédient'=>$product->getIngredient(),
-                'Etapes'=>$product->getEtapes()
+                'id'=>$recette->getId(),
+                'Categorie'=>$recette->getCategorie(),
+                'Nom'=>$recette->getNom(),
+                'Description'=>$recette->getDescription(),
+                'Ingrédient'=>$recette->getIngredient(),
+                'Etapes'=>$recette->getEtapes(),
+                'Macros'=>$recette->getMacros()
            ];
         }
 
@@ -37,7 +38,6 @@ class RecetteController extends AbstractController
        
     // Afficher une recette selon id
     
-    // #[IsGranted('ROLE_ADMIN', message: 'Vous n\'avez pas les droits suffisants pour créer une recette')]
     public function showById(int $id, RecetteRepository $recetteRepository): Response
     {
         $recette = $recetteRepository->find($id);
@@ -45,8 +45,6 @@ class RecetteController extends AbstractController
         if (!$recette) {
             throw $this->createNotFoundException('Recette inconnue');
     
-            // the above is just a shortcut for:
-            // throw new NotFoundHttpException('The product does not exist');
         }
 
         $data =[
@@ -55,7 +53,8 @@ class RecetteController extends AbstractController
             'Nom'=>$recette->getNom(),
             'Description'=>$recette->getDescription(),
             'Ingredients'=>$recette->getIngredient(),
-            'Etapes'=>$recette->getEtapes()
+            'Etapes'=>$recette->getEtapes(),
+            'Macros'=>$recette->getMacros()
         ];
 
         return new JsonResponse($data);
@@ -76,6 +75,7 @@ class RecetteController extends AbstractController
         $recette->setDescription($data['description']);
         $recette->setIngredient($data['ingredients']);
         $recette->setEtapes($data['etapes']);
+        $recette->setMacros($data['macros']);
         $recette->setImage($data['image']);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
@@ -116,6 +116,7 @@ class RecetteController extends AbstractController
         $recette->setDescription($data['description']);
         $recette->setIngredient($data['ingredients']);
         $recette->setEtapes($data['etapes']);
+        $recette->setMacros($data['macros']);
         $recette->setImage($data['image']);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
