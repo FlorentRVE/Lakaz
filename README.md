@@ -14,7 +14,6 @@ Application visant à regrouper des recettes de cuisine triées par catégorie.
 - [Aperçu](#aperçu)
   - [Le projet](#le-projet)
   - [Screenshot](#screenshot)
-  - [Liens](#liens)
 - [Méthode](#méthode)
   - [Outils](#outils)
 
@@ -31,10 +30,6 @@ Les objectifs du projet :
 ### Screenshot
 
 ![screenshot](/screenshot.jpg)
-
-### Liens
-
-- Solution URL: [GitHub repo](https://github.com/FlorentRVE/Lakaz)
 
 ## Méthode
 
