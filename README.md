@@ -29,7 +29,8 @@ Les objectifs du projet :
 
 ### Screenshot
 
-![screenshot](/screenshot.jpg)
+![screenshot](/Animation_4.gif)
+
 
 ## Méthode
 
