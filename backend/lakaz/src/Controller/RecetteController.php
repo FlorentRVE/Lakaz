@@ -8,10 +8,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\RecetteRepository;
 use App\Entity\Recette;
-use PhpParser\Node\Name;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Filesystem\Filesystem;
 
 class RecetteController extends AbstractController
 {
@@ -138,7 +136,7 @@ class RecetteController extends AbstractController
             // Chemin complet de l'image
             $filePath = $this->getParameter('kernel.project_dir') . '/public/images/' . $image;
             
-            unlink($filePath);       
+            unlink($filePath); // Suppression de l'image dans le dossier   
             
         }
 
