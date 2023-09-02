@@ -66,15 +66,22 @@ const Recipe = () => {
                 <button className="bg-slate-800 rounded-lg p-2 text-slate-200 w-24 hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Retour</button>
             </Link>
 
-            <div className="flex flex-col items-center gap-2">
-              {token &&        
-                <Link to={`/modify/${id}`} style={{ textDecoration: 'none' }}>
-                  <button className="bg-slate-800 rounded-lg p-2 text-slate-200 w-24 hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Modifier</button>
-                </Link>
-              
-            }
 
-            </div>
+            {token && 
+            
+              <div className="flex w-[80%] justify-between">
+                <Link to={`/modify/${id}`} style={{ textDecoration: 'none' }}>
+                  <button className="bg-slate-800 rounded-lg p-2 text-slate-200 hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Modifier recette</button>
+                </Link>
+
+                <Link to={`/image/${id}`} style={{ textDecoration: 'none' }}>
+                  <button className="bg-slate-800 rounded-lg p-2 text-slate-200 hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Modifier image</button>
+                </Link>
+
+              </div>
+              
+              }
+
 
           </div>
 
@@ -82,7 +89,7 @@ const Recipe = () => {
 
           <h3 className="text-3xl uppercase text-red-500 text-center font-bold mt-10">{data.Nom}</h3>
 
-          <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="" className="w-3/4 mx-auto max-h-80 border-b-4 object-cover rounded-2xl mt-6"/>
+          <img src={data.Image} alt="" className="w-3/4 mx-auto max-h-80 border-b-4 object-cover rounded-2xl mt-6"/>
           
           <p className="bg-green-500 my-5 rounded-lg px-2 py-1 w-32 mx-auto text-center">{data.Categorie}</p>
 

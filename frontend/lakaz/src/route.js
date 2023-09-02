@@ -5,6 +5,7 @@ import Login from './component/admin/login';
 import Admincreate from './component/admin/adminCreate';
 import Adminmodify from './component/admin/adminModify';
 import Admindelete from './component/admin/adminDelete';
+import Adminimage from './component/admin/adminImage';
 
 import {createBrowserRouter} from "react-router-dom";
 
@@ -21,6 +22,8 @@ import {createBrowserRouter} from "react-router-dom";
     { path: "/create", element: <Admincreate />, errorElement:<Error />},
 
     { path: "/modify/:id", element: <Adminmodify />, errorElement:<Error />},
+
+    { path: "/image/:id", element: <Adminimage />, errorElement:<Error />},
 
     { path: "/delete/:id", element: <Admindelete />, errorElement:<Error />},
 

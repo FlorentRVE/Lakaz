@@ -10,6 +10,8 @@ use App\Repository\RecetteRepository;
 use App\Entity\Recette;
 use PhpParser\Node\Name;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Filesystem\Filesystem;
 
 class RecetteController extends AbstractController
 {
@@ -19,6 +21,9 @@ class RecetteController extends AbstractController
     {
         $recette = $recetteRepository->findAll();
         $data = [];
+
+        // Récupération de l'URL de l'image 
+        $cheminImage = 'http://127.0.0.1:8000/images/'; // URL du chemin fournissant Image
    
         foreach ($recette as $recette) {
            $data[] = [
@@ -28,7 +33,8 @@ class RecetteController extends AbstractController
                 'Description'=>$recette->getDescription(),
                 'Ingrédient'=>$recette->getIngredient(),
                 'Etapes'=>$recette->getEtapes(),
-                'Macros'=>$recette->getMacros()
+                'Macros'=>$recette->getMacros(),
+                'Image'=>$recette->getImage() == null ? $cheminImage . 'default.jpg' : $cheminImage . $recette->getImage()
            ];
         }
 
@@ -47,6 +53,14 @@ class RecetteController extends AbstractController
     
         }
 
+        // Récupération de l'URL de l'image 
+        $cheminImage = 'http://127.0.0.1:8000/images/'; // URL du chemin fournissant Image
+        $image = $recette->getImage(); // Nom de l'image dans la BDD
+        if($image == null) {
+            $image = 'default.jpg';
+        }
+        $imageUrl = $cheminImage . $image;
+
         $data =[
             'id'=>$recette->getId(),
             'Categorie'=>$recette->getCategorie(),
@@ -54,10 +68,31 @@ class RecetteController extends AbstractController
             'Description'=>$recette->getDescription(),
             'Ingredients'=>$recette->getIngredient(),
             'Etapes'=>$recette->getEtapes(),
-            'Macros'=>$recette->getMacros()
+            'Macros'=>$recette->getMacros(),
+            'Image'=>$imageUrl
         ];
 
         return new JsonResponse($data);
+    }
+
+    // Afficher image
+    public function showImage($filename)
+    {
+        // Construction du chemin absolu vers le fichier image dans le dossier public
+        $filePath = $this->getParameter('kernel.project_dir') . '/public/images/' . $filename;
+
+        // Vérification si le fichier image existe
+        if (file_exists($filePath)) {
+            // Créez une réponse HTTP pour renvoyer le fichier image
+            $response = new Response();
+            $response->headers->set('Content-Type', 'image/jpeg'); // Définissez le type de contenu approprié (peut varier selon le type d'image)
+            $response->setContent(file_get_contents($filePath));
+
+            return $response;
+        } else {
+            // Gérez le cas où le fichier image n'existe pas
+            throw $this->createNotFoundException('Image not found');
+        }
     }
 
     //==================================== CRUD =============================================
@@ -76,7 +111,6 @@ class RecetteController extends AbstractController
         $recette->setIngredient($data['ingredients']);
         $recette->setEtapes($data['etapes']);
         $recette->setMacros($data['macros']);
-        $recette->setImage($data['image']);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($recette);
@@ -92,12 +126,26 @@ class RecetteController extends AbstractController
     public function deleteRecette(Request $request, RecetteRepository $recetteRepository, EntityManagerInterface $entityManager): Response
     {
 
-        $data = json_decode($request->getContent(), true);
+        $data = json_decode($request->getContent(), true); // Récupération du contenu de la requête
 
-        $recette = $recetteRepository->find($data['id']);
+        $recette = $recetteRepository->find($data['id']); // Récupération de la recette par l'id
+
+        // Récupération de l'URL de l'image 
+        $image = $recette->getImage(); // Nom de l'image dans la BDD
+
+        if($image != null) {
+
+            // Chemin complet de l'image
+            $filePath = $this->getParameter('kernel.project_dir') . '/public/images/' . $image;
+            
+            unlink($filePath);       
+            
+        }
 
         $entityManager->remove($recette);
         $entityManager->flush();
+
+        
         
 
         return new Response('Recette supprimée', 200);
@@ -117,7 +165,6 @@ class RecetteController extends AbstractController
         $recette->setIngredient($data['ingredients']);
         $recette->setEtapes($data['etapes']);
         $recette->setMacros($data['macros']);
-        $recette->setImage($data['image']);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($recette);
@@ -127,4 +174,56 @@ class RecetteController extends AbstractController
 
         return new Response('La recette suivante a bien été modifié: '. $data['nom'], 200);
     } 
+
+    // Modifier une image
+    public function modifyImage(Request $request, RecetteRepository $recetteRepository, EntityManagerInterface $entityManager): Response
+    {
+        
+        $id = $request->get('id'); // Récupération de l'id de la requête
+
+        $recette = $recetteRepository->find($id); // Récupération de la recette dans la BDD
+
+        //===================== Supression image existante ===================
+        
+        // Récupération de l'URL de l'image 
+        $image = $recette->getImage(); // Nom de l'image dans la BDD
+        
+        if($image != null) {
+
+            // Chemin complet de l'image
+            $filePath = $this->getParameter('kernel.project_dir') . '/public/images/' . $image;
+            
+            unlink($filePath);       
+            
+        }        
+        
+        // ============== Gestion de l'image téléchargé  ==============================
+
+        // Récupérez le fichier téléchargé du champ "image"
+        $imageFile = $request->files->get('image');
+
+        if ($imageFile instanceof UploadedFile) {
+            // Spécifiez le répertoire de destination dans le dossier "public/images"
+            $destinationDirectory = $this->getParameter('kernel.project_dir') . '/public/images';
+
+            // Générez un nom de fichier unique
+            $newFileName = uniqid() . '.' . $imageFile->getClientOriginalExtension();
+
+            // Déplacez le fichier dans le répertoire de destination
+            $imageFile->move($destinationDirectory, $newFileName);
+        }
+
+        // Maintenant, $newFileName contient le nom du fichier téléchargé
+        // Vous pouvez le stocker en base de données ou effectuer d'autres opérations ici
+
+        $recette->setImage($newFileName);
+
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($recette);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return new Response("L'image a bien été modifié: ", 200);
+    }
 }

@@ -22,7 +22,7 @@ const Modify = () => {
   const [categorie, setCategorie] = useState('');
   const [nom, setNom] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState(null);
+  const image = null;
   
   //============= Setup des ingrédients ============
   const [ingredientUn, setIngredientUn] = useState('');
@@ -107,11 +107,6 @@ const Modify = () => {
   
   const handleCategorieChange = (e) => {
     setCategorie(e.target.value);
-  };
-  
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
   };
 
   //============= Gestion des ingrédients ============
@@ -320,13 +315,9 @@ const handleMacroGluChange = (e) => {
               <option value="">Sélectionnez une catégorie</option>
               <option value="petit-dejeuner">Petit-déjeuner</option>
               <option value="repas">Repas</option>
+              <option value="collation">Collation</option>
               <option value="dessert">Dessert</option>
             </select>
-          </div>
-
-          <div className='flex flex-col'>
-            <label className='font-bold text-red-500 uppercase mb-2'>Image : </label>
-            <input type="file" onChange={handleImageChange} className='p-2 rounded-xl'/>
           </div>
 
           <button type="submit" className='bg-blue-500 rounded-2xl p-2 active:bg-yellow-500 text-slate-50'>Modifier la recette</button>

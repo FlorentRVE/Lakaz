@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './login';
-import Delete from './Delete';
+import Delete from './delete';
 
 const Admindelete = () => {
 

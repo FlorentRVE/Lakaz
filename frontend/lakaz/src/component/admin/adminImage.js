@@ -1,13 +1,12 @@
 import React from 'react';
 import Login from './login';
-import Modify from './modify';
-import Footer from '../footer';
+import Image from './image';
 
-const Adminmodify = () => {
+const Adminimage = () => {
 
   const token = localStorage.getItem('jwtToken'); // Supposons que vous stockez le token JWT dans le localStorage après la connexion réussie
   
-  if (token) {    return <div><Modify /> <Footer /></div>;  }  return <Login />;}
+  if (token) {    return <Image />;  }  return <Login />;}
 ;
 
-export default Adminmodify;
+export default Adminimage;

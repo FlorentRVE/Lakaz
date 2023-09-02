@@ -43,7 +43,7 @@ const HomeGrid = ({category, input}) => {
 
           <Link key={item.id} to={`/recette/${item.id}`} style={{ textDecoration: 'none'}}>
 
-            <div id={item.id} className= "relative rounded-2xl m-4 h-[400px] w-[300px] shadow-xl hover:scale-105 transition ease-in-out delay-150 hover:brightness-110" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60)`, backgroundSize: 'cover'}}>
+            <div id={item.id} className= "relative rounded-2xl m-4 h-[400px] w-[300px] shadow-xl hover:scale-105 transition ease-in-out delay-150 hover:brightness-110" style={{ backgroundImage: `url(${item.Image})`, backgroundSize: 'cover'}}>
                 <p className= 'bg-green-500 rounded-r-2xl p-2 absolute top-5 left-0 w-1/2 bg-opacity-90 text-slate-900 text-lg text-center uppercase'>{item.Categorie}</p>
                 <h2 className= 'absolute top-[300px] text-2xl text-slate-100 font-semibold ml-5'>{item.Nom}</h2>
             </div>

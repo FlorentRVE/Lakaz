@@ -20,6 +20,10 @@ modify_recipe:
     path: /api/modifyrecette
     controller: App\Controller\RecetteController::modifyRecette
 
+modify_image:
+    path: /api/modifyimage
+    controller: App\Controller\RecetteController::modifyImage
+
 delete_recipe:
     path: /api/deleterecette
     controller: App\Controller\RecetteController::deleteRecette
@@ -34,3 +38,7 @@ delete_user:
 
 api_login:
     path: /api/login
+
+images:
+    path: /images/{filename}
+    controller: App\Controller\RecetteController::showImage
