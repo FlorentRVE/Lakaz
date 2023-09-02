@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './login';
-import Create from './create';
+import Create from './Create';
 import Footer from '../footer';
 
 

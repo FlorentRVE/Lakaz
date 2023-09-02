@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './login';
-import Modify from './modify';
+import Modify from './Modify';
 import Footer from '../footer';
 
 const Adminmodify = () => {
