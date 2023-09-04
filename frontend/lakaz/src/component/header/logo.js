@@ -2,7 +2,7 @@ import React from "react";
 import MenuAdmin from "./menu_admin";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Logo = () => {
 
 
     return (
@@ -21,4 +21,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+export default Logo;

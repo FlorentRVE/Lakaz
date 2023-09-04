@@ -1,16 +1,16 @@
 //=============================== Page Erreur ==========================
 
 import { Link } from 'react-router-dom';
-import Header from './header/header';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Logo from './header/logo';
 
 
 const Error = () => {
 
     return (
     <div>
-        < Header/>
+        < Logo/>
         <div className="flex flex-col items-center shadow-2xl p-8 rounded-2xl">
             <div className="flex flex-col items-center my-7">
                 <p className="text-9xl">404</p>

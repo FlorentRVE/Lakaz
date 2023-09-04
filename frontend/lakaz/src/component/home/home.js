@@ -1,12 +1,12 @@
 //=============================== Composant Home ==========================
 
 import React from 'react';
-import Header from '../header/header';
 import HomeGrid from './home_grid';
 import Footer from '../footer';
 import Menu from '../header/menu';
 import { useState } from 'react';
 import SearchBar from '../header/search_bar';
+import Logo from '../header/logo';
 
 
 const Home = () => {
@@ -18,20 +18,21 @@ const Home = () => {
 
     <div>
 
-      <div className='sticky top-0 z-50'>
+      <header className='sticky top-0 z-50'>
 
-        < Header />
+        < Logo />
 
         < SearchBar onInput={setInputText}/>
 
         < Menu onCategory={setCategory}/>
 
-      </div>
+      </header>
       
-      <div className='w-4/5 mx-auto rounded-2xl shadow-xl'>
-      < HomeGrid category={category} input={inputText}/>
+      <body className='w-4/5 mx-auto rounded-2xl shadow-xl'>
 
-      </div>
+        < HomeGrid category={category} input={inputText}/>
+
+      </body>
 
       < Footer />
     
