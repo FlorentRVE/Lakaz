@@ -2,10 +2,10 @@ import React from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import {useState, useEffect} from "react";
 import * as api from '../../utils/api';
-import Header from '../header/header';
 import Footer from '../footer';
 import { faCommentDots, faKitchenSet, faWheatAwnCircleExclamation, faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Logo from "../header/logo";
 
 const Recipe = () => {
   
@@ -58,7 +58,7 @@ const Recipe = () => {
         <div className="sm:w-3/4 sm:mx-auto">
                 
           {/* ============================== Header ====================================== */}
-          < Header />
+          < Logo />
           
           <div className="flex flex-col items-center gap-2 justify-evenly mx-auto py-2 mb-4 bg-green-500 rounded-b-2xl sticky top-[120px]">
 
