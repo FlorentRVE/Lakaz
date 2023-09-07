@@ -25,7 +25,7 @@ const PopupWindow = () => {
     
     console.log('le token expire dans: ' + tempsrestantMinutes + ' minutes');
 
-  }, []);
+  }, [token]);
 
   const closePopup = () => {
     setIsOpen(false); // A la fermeture du pop-up
