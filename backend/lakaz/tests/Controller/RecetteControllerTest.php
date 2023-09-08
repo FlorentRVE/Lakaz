@@ -23,7 +23,7 @@ class RecetteControllerTest extends WebTestCase
         // Vérifier que le contenu de la réponse est bien un tableau avec les données de la BDD Test
         $this->assertEquals( [
             0 => [
-              "id" => 3,
+              "id" => 1,
               "Categorie" => "Entrée",
               "Nom" => "Couscous",
               "Description" => "Recette couscous",
