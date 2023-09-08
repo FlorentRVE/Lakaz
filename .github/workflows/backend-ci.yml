@@ -34,14 +34,15 @@ jobs:
         composer install --no-interaction --prefer-dist
       
     - name: Set up MySQL
-      uses: mirromutth/mysql-action@v1.1
+      uses: mysql/mysql-action@v1.1
       with:
         mysql-version: '8.0.32'
+        mysql user: 'root' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
+        mysql password: ${{ secrets.MYSQL_ROOT_PASSWORD }} # Required if "mysql user" exists. The password for the "mysql user"
         mysql-root-password: ${{ secrets.MYSQL_ROOT_PASSWORD }}
 
     - name: Prepare Symfony Environment for Tests
-      run: |
-        cd ./backend/lakaz
+      run:
         cp .env.test .env
         php bin/console doctrine:database:create --env=test
         php bin/console doctrine:schema:create --env=test
@@ -50,8 +51,7 @@ jobs:
     - name: Run PHPUnit Tests
       env:
         DATABASE_URL: mysql://root:root@127.0.0.1:3306/lakaz?serverVersion=8.0.32&charset=utf8mb4
-      run: |
-        cd ./backend/lakaz
+      run:
         php bin/phpunit
 
 
