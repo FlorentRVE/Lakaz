@@ -42,6 +42,8 @@ jobs:
         mysql-root-password: ${{ secrets.MYSQL_ROOT_PASSWORD }}
 
     - name: Prepare Symfony Environment for Tests
+      env:
+        DATABASE_URL: mysql://root:root@mysql:3306/lakaz?serverVersion=8.0.32&charset=utf8mb4
       run: |
         cp .env.test .env
         php bin/console doctrine:database:create --env=test
