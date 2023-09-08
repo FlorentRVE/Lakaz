@@ -34,7 +34,7 @@ jobs:
         composer install --no-interaction --prefer-dist
       
     - name: Set up MySQL
-      uses: mysql/mysql-action@v1.1
+      uses: mirromutth/mysql-action@v1.1
       with:
         mysql-version: '8.0.32'
         mysql user: 'root' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
