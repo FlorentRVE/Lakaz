@@ -1,0 +1,13 @@
+# Workflow de la partie frontend
+# 
+# name: Frontend
+# 
+# on:
+#   push:
+#     branches: [ "Feature/Test" ]
+#   pull_request:
+#     branches: [ "Feature/Test" ]
+# 
+# permissions:
+#   contents: read
+#
