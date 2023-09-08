@@ -26,8 +26,8 @@ jobs:
           
     - name: Install Dependencies
       run: |
-      cd ./backend/lakaz
-      composer install --no-interaction --prefer-dist
+        cd ./backend/lakaz
+        composer install --no-interaction --prefer-dist
       
     - name: Set up MySQL
       uses: mirromutth/mysql-action@v1.1
