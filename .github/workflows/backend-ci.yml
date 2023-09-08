@@ -43,7 +43,7 @@ jobs:
 
     - name: Prepare Symfony Environment for Tests
       env:
-        DATABASE_URL: mysql://root:root@mysql:3306/lakaz?serverVersion=8.0.32&charset=utf8mb4
+        DATABASE_URL: mysql://root:root@127.0.0.1:3306/lakaz?serverVersion=8.0.32&charset=utf8mb4
       run: |
         cp .env.test .env
         php bin/console doctrine:database:create --env=test
@@ -51,8 +51,6 @@ jobs:
         php bin/console doctrine:fixtures:load --env=test --no-interaction
 
     - name: Run PHPUnit Tests
-      env:
-        DATABASE_URL: mysql://root:root@127.0.0.1:3306/lakaz?serverVersion=8.0.32&charset=utf8mb4
       run:
         php bin/phpunit
 
