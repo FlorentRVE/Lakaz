@@ -26,7 +26,7 @@ jobs:
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: false
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: Lakaz
+          MYSQL_DATABASE: lakaz
         ports:
           - 3306/tcp
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -55,9 +55,9 @@ jobs:
         php bin/console doctrine:database:create --env=test
         php bin/console doctrine:schema:create --env=test
         php bin/console doctrine:fixtures:load --env=test --no-interaction
-        
+
       env:
-          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
+          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/lakaz
 
     - name: Run PHPUnit Tests
       run:
