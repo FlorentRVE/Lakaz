@@ -23,12 +23,11 @@ jobs:
 
     - name: Checkout Repository
       uses: actions/checkout@v3
-
-    - name: Move to backend lakaz
-      run: cd ./backend/lakaz
           
     - name: Install Dependencies
-      run: composer install --no-interaction --prefer-dist
+      run: |
+      cd ./backend/lakaz
+      composer install --no-interaction --prefer-dist
       
     - name: Set up MySQL
       uses: mirromutth/mysql-action@v1.1
