@@ -16,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+
+    - name: Move to backend lakaz
+      run: cd ./backend/lakaz
       
     - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
       with:
@@ -23,18 +26,6 @@ jobs:
 
     - name: Checkout Repository
       uses: actions/checkout@v3
-
-    - name: Move to backend lakaz
-      run: cd ./backend/lakaz
-      
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
           
     - name: Install Dependencies
       run: composer install --no-interaction --prefer-dist
