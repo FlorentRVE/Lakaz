@@ -20,7 +20,7 @@ const Login = () => {
     e.preventDefault();
 
     // Votre URL d'API distant
-    const apiUrl = 'http://127.0.0.1:8000/api/login';
+    const apiUrl = 'https://www.recette-lakaz.re/api/login';
 
     // Créer un objet pour les données à envoyer dans la requête POST
     const data = {

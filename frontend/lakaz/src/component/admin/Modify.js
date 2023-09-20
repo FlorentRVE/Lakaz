@@ -242,7 +242,7 @@ const handleMacroGluChange = (e) => {
     }
 
     // Envoyer la requête POST à l'API
-    axios.post("http://127.0.0.1:8000/api/modifyrecette", formData, option)
+    axios.post("https://www.recette-lakaz.re/api/modifyrecette", formData, option)
     .then((response) => {
         console.log(response);
         setmodified(true);

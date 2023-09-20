@@ -193,7 +193,7 @@ const Create = () => {
 
 
     // Envoyer la requête POST à l'API
-      axios.post("http://127.0.0.1:8000/api/createrecette", formData, option)
+      axios.post("https://www.recette-lakaz.re/api/createrecette", formData, option)
       .then((response) => {
           console.log(response);
           setCreated(true);      

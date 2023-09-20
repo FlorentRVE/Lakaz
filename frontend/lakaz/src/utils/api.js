@@ -1,6 +1,6 @@
 // ============================ API FETCH ========================
 
-const API_BASE_URL = 'http://127.0.0.1:8000/recette/';
+const API_BASE_URL = 'https://www.recette-lakaz.re/recette/';
 
 // Récupérer toutes les recettes
 export const getData = async () => {
