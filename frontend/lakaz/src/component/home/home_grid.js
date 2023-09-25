@@ -28,7 +28,7 @@ const HomeGrid = ({category, input}) => {
       if (input === '') {
           return finalData; // Si pas de nom on retourne les données précédentes
       }
-      return finalData.filter((item) => item.Nom.toLowerCase().includes(input)) // Sinon on ajuste en fonction de l'input de la search barre
+      return finalData.filter((item) => item.Nom.includes(input)) // Sinon on ajuste en fonction de l'input de la search barre
     }
 
     // Permet de recalculer la liste seulement si input, category ou data changent

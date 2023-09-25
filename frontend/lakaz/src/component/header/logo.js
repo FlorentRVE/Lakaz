@@ -7,7 +7,7 @@ const Logo = () => {
 
     return (
 
-        <div className="flex flex-col items-center p-2 bg-green-400 shadow-2xl sticky top-0">
+        <div className="flex flex-col items-center p-2 bg-green-400 shadow-2xl">
 
             < MenuAdmin />    
 

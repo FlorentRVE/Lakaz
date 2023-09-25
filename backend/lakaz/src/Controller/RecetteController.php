@@ -21,7 +21,7 @@ class RecetteController extends AbstractController
         $data = [];
 
         // Récupération de l'URL de l'image 
-        $cheminImage = 'https://www.recette-lakaz.re/images/'; // URL du chemin fournissant Image
+        $cheminImage = 'http://127.0.0.1:8000/images/'; // URL du chemin fournissant Image
    
         foreach ($recette as $recette) {
            $data[] = [

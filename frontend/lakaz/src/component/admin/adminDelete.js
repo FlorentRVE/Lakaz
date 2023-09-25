@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './login';
-import Delete from './delete';
+import Delete from './Delete';
 import PopupWindow from './popup';
 
 const Admindelete = () => {

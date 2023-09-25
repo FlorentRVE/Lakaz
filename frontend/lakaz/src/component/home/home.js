@@ -18,7 +18,7 @@ const Home = () => {
 
     <div>
 
-      <header className='sticky top-0 z-50'>
+      <header className=''>
 
         < Logo />
 

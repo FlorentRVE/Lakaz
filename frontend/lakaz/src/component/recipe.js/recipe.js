@@ -60,7 +60,7 @@ const Recipe = () => {
           {/* ============================== Header ====================================== */}
           < Logo />
           
-          <div className="flex flex-col items-center gap-2 justify-evenly mx-auto py-2 mb-4 bg-green-500 rounded-b-2xl sticky top-[120px]">
+          <div className="flex flex-col items-center gap-2 justify-evenly mx-auto py-2 mb-4 bg-green-500 rounded-b-2xl">
 
             <Link to={`/`} style={{ textDecoration: 'none' }}>
                 <button className="bg-slate-800 rounded-lg p-2 text-slate-200 w-24 hover:brightness-125 active:brightness-150 focus:outline-none focus:ring focus:ring-slate-100">Retour</button>
